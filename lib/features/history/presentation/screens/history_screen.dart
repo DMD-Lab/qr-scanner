@@ -44,18 +44,18 @@ class HistoryScreen extends ConsumerWidget {
   void _confirmClearAll(BuildContext context, WidgetRef ref) {
     showDialog(
       context: context,
-      builder: (_) => AlertDialog(
+      builder: (dialogContext) => AlertDialog(
         title: const Text('Vider l\'historique'),
         content: const Text('Tous les scans seront supprimés. Cette action est irréversible.'),
         actions: [
           TextButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () => Navigator.pop(dialogContext),
             child: const Text('Annuler'),
           ),
           FilledButton(
             onPressed: () {
               ref.read(historyProvider.notifier).clearAll();
-              Navigator.pop(context);
+              Navigator.pop(dialogContext);
             },
             style: FilledButton.styleFrom(backgroundColor: AppColors.errorDark),
             child: const Text('Vider'),
@@ -122,7 +122,10 @@ class _HistoryTile extends ConsumerWidget {
                 : AppTextStyles.label,
           ),
           subtitle: Text(dateStr, style: AppTextStyles.caption),
-          trailing: _TileMenu(item: item),
+          trailing: _TileMenu(
+            item: item,
+            onDelete: () => ref.read(historyProvider.notifier).delete(item.id),
+          ),
         ),
       ),
     );
@@ -154,8 +157,9 @@ class _TypeIcon extends StatelessWidget {
 }
 
 class _TileMenu extends StatelessWidget {
-  const _TileMenu({required this.item});
+  const _TileMenu({required this.item, required this.onDelete});
   final ScanResult item;
+  final VoidCallback onDelete;
 
   @override
   Widget build(BuildContext context) {
@@ -164,6 +168,11 @@ class _TileMenu extends StatelessWidget {
       itemBuilder: (_) => [
         const PopupMenuItem(value: 'copy', child: Text('Copier')),
         if (item.isUrl) const PopupMenuItem(value: 'open', child: Text('Ouvrir')),
+        const PopupMenuDivider(),
+        const PopupMenuItem(
+          value: 'delete',
+          child: Text('Supprimer', style: TextStyle(color: AppColors.errorDark)),
+        ),
       ],
       onSelected: (action) async {
         if (action == 'copy') {
@@ -176,6 +185,8 @@ class _TileMenu extends StatelessWidget {
         } else if (action == 'open') {
           final uri = Uri.tryParse(item.raw);
           if (uri != null) await launchUrl(uri, mode: LaunchMode.externalApplication);
+        } else if (action == 'delete') {
+          onDelete();
         }
       },
     );

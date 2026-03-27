@@ -24,6 +24,9 @@ dependencies:
   path: ^1.9.0
   path_provider: ^2.1.4
 
+  # Fonts
+  google_fonts: ^6.2.1
+
   # Utils
   url_launcher: ^6.3.1
   share_plus: ^10.1.2
@@ -34,6 +37,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.3
+  flutter_native_splash: ^2.4.3
 
 flutter:
   uses-material-design: true
@@ -41,14 +46,25 @@ flutter:
   assets:
     - assets/images/
 
-  fonts:
-    - family: Inter
-      fonts:
-        - asset: assets/fonts/Inter/Inter-Regular.ttf
-          weight: 400
-        - asset: assets/fonts/Inter/Inter-Medium.ttf
-          weight: 500
-        - asset: assets/fonts/Inter/Inter-SemiBold.ttf
-          weight: 600
-        - asset: assets/fonts/Inter/Inter-Bold.ttf
-          weight: 700
+  # Fonts gérées via google_fonts
+
+# --- Icône d'app ---
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/qrscanner_icon_white.png"
+  adaptive_icon_background: "#6366F1"
+  adaptive_icon_foreground: "assets/images/qrscanner_logo_white.png"
+  min_sdk_android: 21
+  web:
+    generate: false
+
+# --- Splash screen natif ---
+flutter_native_splash:
+  color: "#6366F1"
+  color_dark: "#6366F1"
+  image: assets/images/qrscanner_logo_white.png
+  android_12:
+    color: "#6366F1"
+    image: assets/images/qrscanner_logo_white.png
+  fullscreen: false

@@ -75,13 +75,36 @@ class SettingsScreen extends ConsumerWidget {
             subtitle: 'Version 1.0.0',
           ),
           Padding(
-            padding: const EdgeInsets.all(AppSpacing.s5),
-            child: Text(
-              'Une app DMD Lab',
-              style: AppTextStyles.caption.copyWith(
-                color: isDark ? AppColors.darkTextDisabled : AppColors.lightTextDisabled,
-              ),
-              textAlign: TextAlign.center,
+            padding: const EdgeInsets.symmetric(vertical: AppSpacing.s6),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'Une app créée par',
+                  style: AppTextStyles.caption.copyWith(
+                    color: isDark ? AppColors.darkTextDisabled : AppColors.lightTextDisabled,
+                  ),
+                ),
+                ColorFiltered(
+                  colorFilter: isDark
+                      ? const ColorFilter.matrix([
+                          -1,  0,  0, 0, 255,
+                           0, -1,  0, 0, 255,
+                           0,  0, -1, 0, 255,
+                           0,  0,  0, 1,   0,
+                        ])
+                      : const ColorFilter.matrix([
+                          1, 0, 0, 0, 0,
+                          0, 1, 0, 0, 0,
+                          0, 0, 1, 0, 0,
+                          0, 0, 0, 1, 0,
+                        ]),
+                  child: Image.asset(
+                    'assets/images/dmdlab_logo.png',
+                    width: 80,
+                  ),
+                ),
+              ],
             ),
           ),
         ],
@@ -92,18 +115,18 @@ class SettingsScreen extends ConsumerWidget {
   void _confirmClearHistory(BuildContext context, WidgetRef ref) {
     showDialog(
       context: context,
-      builder: (_) => AlertDialog(
+      builder: (dialogContext) => AlertDialog(
         title: const Text('Vider l\'historique'),
         content: const Text('Tous les scans seront supprimés. Cette action est irréversible.'),
         actions: [
           TextButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () => Navigator.pop(dialogContext),
             child: const Text('Annuler'),
           ),
           FilledButton(
             onPressed: () {
               ref.read(historyProvider.notifier).clearAll();
-              Navigator.pop(context);
+              Navigator.pop(dialogContext);
             },
             style: FilledButton.styleFrom(backgroundColor: AppColors.errorDark),
             child: const Text('Vider'),

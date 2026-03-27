@@ -98,22 +98,28 @@ class ScanResultSheet extends StatelessWidget {
                     },
                   ),
                 ),
-                if (onOpen != null) ...[
-                  const SizedBox(width: AppSpacing.s3),
-                  Expanded(
-                    child: _ActionButton(
-                      icon: Icons.open_in_browser,
-                      label: 'Ouvrir',
-                      primary: true,
-                      onTap: () {
-                        Navigator.pop(context);
-                        onOpen!();
-                      },
-                    ),
-                  ),
-                ],
               ],
             ),
+            if (onOpen != null) ...[
+              const SizedBox(height: AppSpacing.s3),
+              SizedBox(
+                width: double.infinity,
+                child: FilledButton.icon(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    onOpen!();
+                  },
+                  icon: const Icon(Icons.open_in_browser, size: 18),
+                  label: const Text('Ouvrir le lien'),
+                  style: FilledButton.styleFrom(
+                    minimumSize: const Size(0, 48),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(AppRadius.md),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ] else
             SizedBox(
               width: double.infinity,
@@ -243,30 +249,16 @@ class _ActionButton extends StatelessWidget {
     required this.icon,
     required this.label,
     required this.onTap,
-    this.primary = false,
   });
 
   final IconData icon;
   final String label;
   final VoidCallback onTap;
-  final bool primary;
 
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final bg = isDark ? AppColors.darkBgTertiary : AppColors.lightBgTertiary;
-
-    if (primary) {
-      return FilledButton.icon(
-        onPressed: onTap,
-        icon: Icon(icon, size: 18),
-        label: Text(label),
-        style: FilledButton.styleFrom(
-          minimumSize: const Size(0, 48),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.md)),
-        ),
-      );
-    }
 
     return InkWell(
       onTap: onTap,

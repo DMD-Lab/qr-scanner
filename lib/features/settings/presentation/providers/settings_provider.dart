@@ -53,7 +53,7 @@ class SettingsNotifier extends Notifier<AppSettings> {
   Future<void> _load() async {
     final prefs = await SharedPreferences.getInstance();
     state = AppSettings(
-      themeMode: ThemeMode.values[prefs.getInt(_keyTheme) ?? 0],
+      themeMode: ThemeMode.values[prefs.getInt(_keyTheme) ?? ThemeMode.dark.index],
       autoOpen: prefs.getBool(_keyAutoOpen) ?? false,
       soundEnabled: prefs.getBool(_keySound) ?? true,
       hapticEnabled: prefs.getBool(_keyHaptic) ?? true,

@@ -43,6 +43,11 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
       HapticFeedback.mediumImpact();
     }
 
+    // Son
+    if (settings.soundEnabled) {
+      SystemSound.play(SystemSoundType.click);
+    }
+
     // Sauvegarder dans l'historique
     await ref.read(historyProvider.notifier).add(raw);
 

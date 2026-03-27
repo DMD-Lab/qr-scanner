@@ -1,12 +1,17 @@
 import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
+import '../features/splash/splash_screen.dart';
 import '../features/scanner/presentation/screens/scanner_screen.dart';
 import '../features/history/presentation/screens/history_screen.dart';
 import '../features/settings/presentation/screens/settings_screen.dart';
 
 final appRouter = GoRouter(
-  initialLocation: '/scan',
+  initialLocation: '/splash',
   routes: [
+    GoRoute(
+      path: '/splash',
+      builder: (context, state) => const SplashScreen(),
+    ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, shell) => AppShell(shell: shell),
       branches: [
