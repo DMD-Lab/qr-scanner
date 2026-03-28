@@ -35,6 +35,8 @@ class AppTheme {
         backgroundColor: AppColors.darkBgSecondary,
         selectedItemColor: AppColors.primary,
         unselectedItemColor: AppColors.darkTextSecondary,
+        selectedLabelStyle: AppTextStyles.navLabel,
+        unselectedLabelStyle: AppTextStyles.navLabel,
         elevation: 0,
       ),
       inputDecorationTheme: InputDecorationTheme(
@@ -85,6 +87,8 @@ class AppTheme {
         backgroundColor: AppColors.lightBgPrimary,
         selectedItemColor: AppColors.primary,
         unselectedItemColor: AppColors.lightTextSecondary,
+        selectedLabelStyle: AppTextStyles.navLabel,
+        unselectedLabelStyle: AppTextStyles.navLabel,
         elevation: 0,
       ),
       inputDecorationTheme: InputDecorationTheme(

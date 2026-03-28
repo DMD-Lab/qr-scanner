@@ -46,6 +46,20 @@ class AppTextStyles {
         height: 1.4,
       );
 
+  static TextStyle get buttonLabel => GoogleFonts.inter(
+        fontSize: 15,
+        fontWeight: FontWeight.w600,
+        height: 1.2,
+        letterSpacing: 0.1,
+      );
+
+  static TextStyle get navLabel => GoogleFonts.inter(
+        fontSize: 11,
+        fontWeight: FontWeight.w500,
+        height: 1.2,
+        letterSpacing: 0.2,
+      );
+
   static TextStyle get mono => GoogleFonts.jetBrainsMono(
         fontSize: 13,
         fontWeight: FontWeight.w400,
