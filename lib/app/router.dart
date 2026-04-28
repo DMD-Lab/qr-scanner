@@ -4,6 +4,7 @@ import '../features/splash/splash_screen.dart';
 import '../features/scanner/presentation/screens/scanner_screen.dart';
 import '../features/history/presentation/screens/history_screen.dart';
 import '../features/settings/presentation/screens/settings_screen.dart';
+import 'widgets/app_nav_shell.dart';
 
 Page<void> _slideFadePage(BuildContext context, GoRouterState state, Widget child) {
   return CustomTransitionPage(
@@ -30,7 +31,7 @@ final appRouter = GoRouter(
       builder: (context, state) => const SplashScreen(),
     ),
     StatefulShellRoute.indexedStack(
-      builder: (context, state, shell) => AppShell(shell: shell),
+      builder: (context, state, shell) => AppNavShell(shell: shell),
       branches: [
         StatefulShellBranch(
           routes: [
@@ -60,24 +61,3 @@ final appRouter = GoRouter(
     ),
   ],
 );
-
-class AppShell extends StatelessWidget {
-  const AppShell({super.key, required this.shell});
-  final StatefulNavigationShell shell;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: shell,
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: shell.currentIndex,
-        onTap: shell.goBranch,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.qr_code_scanner), label: 'Scanner'),
-          BottomNavigationBarItem(icon: Icon(Icons.history), label: 'Historique'),
-          BottomNavigationBarItem(icon: Icon(Icons.settings_outlined), label: 'Paramètres'),
-        ],
-      ),
-    );
-  }
-}

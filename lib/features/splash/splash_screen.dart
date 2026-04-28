@@ -33,9 +33,8 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
                 children: [
                   Image.asset(
                     'assets/images/qrscanner_logo_white.png',
-                    width: 180,
+                    width: 220,
                   ),
-                  const SizedBox(height: 20),
                   Text(
                     'QR Scanner',
                     style: GoogleFonts.pacifico(
@@ -52,23 +51,9 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
             padding: EdgeInsets.only(
               bottom: MediaQuery.of(context).padding.bottom + 40,
             ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const SizedBox(height: 8),
-                ColorFiltered(
-                  colorFilter: const ColorFilter.matrix([
-                    -1,  0,  0, 0, 255,
-                     0, -1,  0, 0, 255,
-                     0,  0, -1, 0, 255,
-                     0,  0,  0, 1,   0,
-                  ]),
-                  child: Image.asset(
-                    'assets/images/dmdlab_logo.png',
-                    width: 90,
-                  ),
-                ),
-              ],
+            child: Image.asset(
+              'assets/images/dmdlab_logo_white.png',
+              width: 110,
             ),
           ),
         ],

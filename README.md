@@ -1,17 +1,33 @@
-# dmdlab_qrscanner
+# QR Scanner — DMD Lab
 
-A new Flutter project.
+Scanner de QR codes et codes-barres. Sans pub, sans compte.
 
-## Getting Started
+## Stack
 
-This project is a starting point for a Flutter application.
+Flutter · Riverpod · GoRouter · mobile_scanner · sqflite
 
-A few resources to get you started if this is your first Flutter project:
+## Couleurs
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+Primaire indigo `#6366F1`
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Fonctionnalités
+
+- Scan en temps réel (QR, code-barres)
+- Détection de type : URL, texte brut
+- Avertissements HTTP / URL raccourcie
+- Historique des scans
+- Deux modes : affichage manuel ou ouverture automatique
+- Dark / light mode
+
+## Lancer le projet
+
+```bash
+flutter pub get
+flutter run
+```
+
+## Build APK
+
+```bash
+flutter build apk --release
+```
