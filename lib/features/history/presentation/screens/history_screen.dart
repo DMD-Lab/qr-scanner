@@ -112,6 +112,19 @@ class _HistoryTile extends ConsumerWidget {
             horizontal: AppSpacing.s4,
             vertical: AppSpacing.s2,
           ),
+          onTap: () async {
+            if (item.isUrl) {
+              final uri = Uri.tryParse(item.raw);
+              if (uri != null) await launchUrl(uri, mode: LaunchMode.externalApplication);
+            } else {
+              await Clipboard.setData(ClipboardData(text: item.raw));
+              if (context.mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Copié dans le presse-papier')),
+                );
+              }
+            }
+          },
           leading: _TypeIcon(type: item.type),
           title: Text(
             item.raw,

@@ -1,8 +1,6 @@
 # QR Scanner — Roadmap
 
-## v1.0 — Socle ✅
-
-> Première version publique. L'essentiel, sans superflu.
+## v1.0 ✅
 
 - Scanner QR codes et codes-barres en temps réel
 - Deux modes de scan : manuel (tap pour ouvrir) et automatique (ouverture immédiate)
@@ -17,34 +15,20 @@
 
 ---
 
-## v2.0 — Idées & pistes
+## v2.0 — Idées
 
-> Améliorer l'utilité quotidienne sans alourdir l'app.
-
-### Scan
-- [ ] Génération de QR codes (texte, URL, contact, Wi-Fi)
-- [ ] Zoom manuel pendant le scan
-- [ ] Scanner depuis une image de la galerie
-
-### Historique
-- [ ] Recherche dans l'historique
-- [ ] Favoris (épingler un scan)
-- [ ] Filtres par type (URL, texte…)
-
-### Contenu
-- [ ] Détection étendue : email, téléphone, coordonnées GPS, événement calendrier, Wi-Fi
-- [ ] Affichage enrichi selon le type (ex: carte pour une adresse, bouton "Appeler" pour un numéro)
-
-### Expérience
-- [ ] Widget écran d'accueil (accès rapide au scanner)
-- [ ] Raccourci depuis l'icône d'app (long press)
+- Génération de QR codes (texte, URL, contact, Wi-Fi)
+- Zoom manuel pendant le scan
+- Scanner depuis une image de la galerie
+- Recherche dans l'historique
+- Favoris (épingler un scan)
+- Détection étendue : email, téléphone, Wi-Fi, événement calendrier
+- Widget écran d'accueil (accès rapide au scanner)
 
 ---
 
-## v3.0 — Vision long terme
+## v3.0 — Vision
 
-> Si l'app trouve son public.
-
-- [ ] Dossiers / collections dans l'historique
-- [ ] Export de l'historique (CSV, JSON)
-- [ ] Thèmes de couleur personnalisables
+- Dossiers / collections dans l'historique
+- Export de l'historique (CSV, JSON)
+- Thèmes de couleur personnalisables
